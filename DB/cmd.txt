@@ -1,0 +1,2 @@
+git remote add origin https://hamidshahmohamadi@dev.azure.com/hamidshahmohamadi/design/_git/design
+git push -u origin --all
