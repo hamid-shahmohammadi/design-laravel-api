@@ -19,16 +19,18 @@ class SettingsController extends Controller
     }
     public function updateProfile(Request $request)
     {
+
+
         $user=auth()->user();
         $this->validate($request,[
            'tagline' => ['required'],
            'name' => ['required'],
            'about' => ['required'],
            'formatted_address' => ['required'],
-           'location.latitude' => ['required','min:-90','max:90'],
-           'location.longitude' => ['required','min:-180','max:180'],
+           'latitude' => ['required','min:-90','max:90'],
+           'longitude' => ['required','min:-180','max:180'],
         ]);
-        $location=new Point($request->location['latitude'],$request->location['longitude']);
+        $location=new Point($request->latitude,$request->longitude);
         $user=$this->users->update(auth()->id(),[
             'name'=>$request->name,
             'formatted_address'=>$request->formatted_address,

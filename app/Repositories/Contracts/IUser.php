@@ -2,6 +2,10 @@
 
 namespace App\Repositories\Contracts;
 
-interface IUser{
+use Illuminate\Http\Request;
 
+interface IUser{
+    public function findByEmail($email);
+
+    public function search(Request $request);
 }
