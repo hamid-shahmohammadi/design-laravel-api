@@ -13,7 +13,7 @@ class ResetPassword extends Notification
 
     public function toMail($notifiable)
     {
-        $url=url(config('app.client_url').'/password/reset/'.$this->token).
+        $url=config('app.client_url').'/password/reset/'.$this->token.
             '?email='.urlencode($notifiable->email);
         return (new MailMessage)
                     ->line('You receiving this email because we receive a password reset pass for your account.')

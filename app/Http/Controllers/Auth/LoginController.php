@@ -75,7 +75,7 @@ class LoginController extends Controller
                 "error"=>[
                     'verification'=>'you need to verify your email account'
                 ]
-            ]);
+            ],422);
         }
         throw ValidationException::withMessages([
             $this->username()=>"Authentication failed"
