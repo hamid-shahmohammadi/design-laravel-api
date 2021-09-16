@@ -110,6 +110,14 @@ class DesignController extends Controller
             ->findWhere('user_id',$userId);
         return DesignResource::collection($designs);
     }
+    public function userOwnsDesign($id)
+    {
+        $design = $this->designs->withCriteria(
+            [ new ForUser(auth()->id())]
+        )->findWhereFirst('id', $id);
+
+        return new DesignResource($design);
+    }
 
 
 

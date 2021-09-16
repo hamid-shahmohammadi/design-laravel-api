@@ -43,6 +43,7 @@ Route::group(['middleware'=>['auth:api']],function (){
     //Upload Design
     Route::post('designs','Designs\UploadController@upload');
     Route::put('designs/{design}','Designs\DesignController@update');
+    Route::get('designs/{id}/byUser', 'Designs\DesignController@userOwnsDesign');
 
     Route::delete('designs/{id}','Designs\DesignController@destroy');
 
