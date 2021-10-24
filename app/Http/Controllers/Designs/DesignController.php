@@ -73,13 +73,17 @@ class DesignController extends Controller
     }
 
     public function like($id){
-        $this->designs->like($id);
-        return response()->json(["message"=>"successful"],200);
+        $total = $this->designs->like($id);
+        return response()->json([
+            'message' => 'Successful',
+            'total' => $total
+        ], 200);
     }
 
     public function checkIfHasLiked($designId){
         $isLiked=$this->designs->isLikedByUser($designId);
-        return response()->json(["liked"=>$isLiked],200);
+        $likeCount=$this->designs->likeCount($designId);
+        return response()->json(["liked"=>$isLiked,"likeCount"=>$likeCount],200);
     }
 
     public function search(Request $request)
